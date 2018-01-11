@@ -1,8 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-// import {App} from "./src/components/App";
-// import {TodoPageContainer} from "./src/pages/TodoPageContainer";
 import injectTapEventPlugin = require("react-tap-event-plugin");
 import {App} from "./src/components/HelloWorld";
 
@@ -11,7 +8,9 @@ class Index {
 
         injectTapEventPlugin();
         ReactDOM.render(
-            <App/>,
+            <div>
+                <span>Hola react</span>
+            </div>,
             document.getElementById('root')
         );
     }
