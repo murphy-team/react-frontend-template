@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server --env=pre-compilation --hot --inline",
+    "build": "webpack --env=pro-compilation"
   },
   "repository": {
     "type": "git",
