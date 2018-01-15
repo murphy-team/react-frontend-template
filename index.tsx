@@ -9,7 +9,7 @@ class Index {
         injectTapEventPlugin();
         ReactDOM.render(
             <div>
-                <span>Hola react</span>
+                <App/>
             </div>,
             document.getElementById('root')
         );

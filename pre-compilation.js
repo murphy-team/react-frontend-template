@@ -36,12 +36,7 @@ module.exports = function (env) {
         },
 
         devServer: {
-            // historyApiFallback: {
-            //     rewrites: [
-            //         // shows favicon
-            //         { from: /favicon.ico/, to: './assets/images/favicon.ico' }
-            //     ]
-            // },
+            historyApiFallback: true,
             disableHostCheck: true,
             contentBase: './dist',
             inline: true,
