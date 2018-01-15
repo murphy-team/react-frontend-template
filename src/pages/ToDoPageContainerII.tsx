@@ -1,0 +1,17 @@
+import {connect} from "react-redux";
+import * as React from "react";
+import {injectIntl} from "react-intl";
+import {IReducers} from "../reducers/IndexReducers";
+import {IDispatchPropsToDoPageII, IPropsToDoPageII, ToDoPageII} from "./ToDoPageII";
+
+const mapStateToProps = (state: IReducers): IPropsToDoPageII => ({
+    toDoPage: state['reducers'].ToDoPageReducer._toDoPage,
+});
+
+const mapDispatchToProps = (dispatch): IDispatchPropsToDoPageII => ({
+});
+
+export const ToDoPageContainerII = connect<IPropsToDoPageII,IDispatchPropsToDoPageII, {} >(
+    mapStateToProps,
+    mapDispatchToProps
+)(injectIntl(ToDoPageII));

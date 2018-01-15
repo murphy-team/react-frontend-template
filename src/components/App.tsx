@@ -6,20 +6,19 @@ import {IntlProvider, intlReducer} from "react-intl-redux";
 import reducers from "../reducers/IndexReducers";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import logger from 'redux-logger';
-import * as spanish from "react-intl/locale-data/es";
-import * as english from "react-intl/locale-data/en";
-import {addLocaleData} from "react-intl";
-import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
 import {ToDoPageContainer} from "../pages/ToDoPageContainer";
-
-addLocaleData([...spanish, ...english]);
+import {ToDoPageContainerII} from "../pages/ToDoPageContainerII";
+import { Route, Switch, Router} from 'react-router-dom';
+import createHistory from 'history/createHashHistory';
+import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 
 const reducer = combineReducers({
     reducers,
     intl: intlReducer,
 });
 
-const middlewares = [ReduxThunk["default"], logger];
+const history = createHistory();
+const middlewares = [ReduxThunk["default"], logger, routerMiddleware(history)];
 
 export const store = createStore(reducer,
     composeWithDevTools(
@@ -33,7 +32,12 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <ToDoPageContainer/>
+                        <Router history={history}>
+                            <Switch>
+                                <Route path={"/"} component={ToDoPageContainer}/>
+                                <Route path={"/2"} component={ToDoPageContainerII}/>
+                            </Switch>
+                        </Router>
                         {this.props.children}
                     </div>
                 </IntlProvider>
