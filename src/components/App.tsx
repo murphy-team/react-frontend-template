@@ -7,18 +7,15 @@ import reducers from "../reducers/IndexReducers";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import {ToDoPageContainer} from "../pages/ToDoPageContainer";
-import {ToDoPageContainerII} from "../pages/ToDoPageContainerII";
-import { Route, Switch, Router} from 'react-router-dom';
-import createHistory from 'history/createHashHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 
 const reducer = combineReducers({
     reducers,
     intl: intlReducer,
+   // routing: routerReducer,
 });
 
-const history = createHistory();
-const middlewares = [ReduxThunk["default"], logger, routerMiddleware(history)];
+const middlewares = [ReduxThunk["default"], logger];
 
 export const store = createStore(reducer,
     composeWithDevTools(
@@ -32,12 +29,7 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <Router history={history}>
-                            <Switch>
-                                <Route path={"/"} component={ToDoPageContainer}/>
-                                <Route path={"/2"} component={ToDoPageContainerII}/>
-                            </Switch>
-                        </Router>
+                        <ToDoPageContainer/>
                         {this.props.children}
                     </div>
                 </IntlProvider>

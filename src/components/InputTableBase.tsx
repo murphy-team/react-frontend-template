@@ -1,11 +1,9 @@
 import * as React from "react";
 import {BootstrapTable, TableHeaderColumn} from "react-bootstrap-table";
-import {FormattedMessage} from "react-intl";
 
 export interface IInputTableProps {
     dataList: any[];
     columnList: any[];
-    intl?: ReactIntl.InjectedIntl;
     onEditCell?: (row) => any;
 }
 

@@ -5,7 +5,7 @@ import {IReducers} from "../reducers/IndexReducers";
 import {IDispatchPropsToDoPageII, IPropsToDoPageII, ToDoPageII} from "./ToDoPageII";
 
 const mapStateToProps = (state: IReducers): IPropsToDoPageII => ({
-    toDoPage: state['reducers'].ToDoPageReducer._toDoPage,
+    toDoPageII: state['reducers'].ToDoPageReducerII._toDoPage,
 });
 
 const mapDispatchToProps = (dispatch): IDispatchPropsToDoPageII => ({

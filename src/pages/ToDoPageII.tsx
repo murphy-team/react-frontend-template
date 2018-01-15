@@ -5,7 +5,7 @@ import {ToDoPageDTO} from "../domain/pages/ToDoPageDTO";
 
 export interface IPropsToDoPageII {
     intl?: any;
-    toDoPage: ToDoPageDTO;
+    toDoPageII: ToDoPageDTO;
 }
 
 export interface IDispatchPropsToDoPageII {
@@ -24,7 +24,7 @@ export class ToDoPageII extends React.Component<IPropsToDoPageII & IDispatchProp
         return(
             <div>
 
-                <ToDoTableComponent columnList={this.props.toDoPage._tableHeaderColumns} dataList={this.props.toDoPage._toDoItems}/>
+                <ToDoTableComponent columnList={this.props.toDoPageII._tableHeaderColumns} dataList={this.props.toDoPageII._toDoItems}/>
             </div>
         );
     }
