@@ -10,20 +10,21 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-r
 import {WelcomePageContainer} from "../pages/WelcomePageContainer";
 import {ToDoPageContainerII} from "../pages/ToDoPageContainerII";
 import {ToDoPageContainer} from "../pages/ToDoPageContainer";
-import {Route, Switch} from "react-router";
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import {NavigationBarComponent} from "./NavigationBarComponent";
+import {TestPage} from "../pages/TestPage";
 
 const reducer = combineReducers({
     reducers,
     intl: intlReducer,
-    routing: routerReducer,
+    //routing: routerReducer,
 });
 
 const middlewares = [ReduxThunk["default"], logger];
 
 export const store = createStore(reducer,
     composeWithDevTools(
-        applyMiddleware(...middlewares)),
-    routerReducer
+        applyMiddleware(...middlewares))
 );
 
 
@@ -33,11 +34,14 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <Switch>
-                            <Route exact path="/" component={WelcomePageContainer}/>
-                            <Route exact path="/test1" component={ToDoPageContainer}/>
-                            <Route exact path="/test2" component={ToDoPageContainerII}/>
-                        </Switch>
+                        <Router>
+                            <div>
+                                <NavigationBarComponent/>
+                                <Route exact path="/" component={TestPage}/>
+                                <Route exact path="/test1" component={ToDoPageContainer}/>
+                                <Route exact path="/test2" component={ToDoPageContainerII}/>
+                            </div>
+                        </Router>
                         {this.props.children}
                     </div>
                 </IntlProvider>

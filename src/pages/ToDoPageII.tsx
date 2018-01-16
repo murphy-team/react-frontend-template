@@ -23,8 +23,7 @@ export class ToDoPageII extends React.Component<IPropsToDoPageII & IDispatchProp
     public render() {
         return(
             <div>
-
-                <ToDoTableComponent columnList={this.props.toDoPageII._tableHeaderColumns} dataList={this.props.toDoPageII._toDoItems}/>
+                <h2>Soy el componente chulo 2</h2>
             </div>
         );
     }
