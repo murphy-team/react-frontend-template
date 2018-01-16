@@ -2,6 +2,7 @@ import {connect} from "react-redux";
 import * as React from "react";
 import {injectIntl} from "react-intl";
 import {IReducers} from "../reducers/IndexReducers";
+import { withRouter } from 'react-router-dom'
 import {IDispatchPropsToDoPage, IPropsToDoPage, ToDoPage} from "./ToDoPage";
 
 const mapStateToProps = (state: IReducers): IPropsToDoPage => ({
@@ -11,7 +12,7 @@ const mapStateToProps = (state: IReducers): IPropsToDoPage => ({
 const mapDispatchToProps = (dispatch): IDispatchPropsToDoPage => ({
 });
 
-export const ToDoPageContainer = connect<IPropsToDoPage,IDispatchPropsToDoPage, {} >(
+export const ToDoPageContainer = withRouter(connect<IPropsToDoPage,IDispatchPropsToDoPage, any >(
     mapStateToProps,
     mapDispatchToProps
-)(injectIntl(ToDoPage));
+)(injectIntl(ToDoPage)));

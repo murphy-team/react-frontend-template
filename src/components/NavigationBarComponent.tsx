@@ -1,12 +1,17 @@
 import * as React from 'react';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import UploadFiles from 'material-ui/svg-icons/file/cloud-upload';
 import Settings from 'material-ui/svg-icons/action/settings'
 import FindInPage from 'material-ui/svg-icons/action/find-in-page';
 import DownloadFiles from 'material-ui/svg-icons/file/file-download';
 import SearchDatabase from 'material-ui/svg-icons/action/youtube-searched-for'
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
+import {ToDoPageDTO} from "../domain/pages/ToDoPageDTO";
+import {RouteComponentProps} from "react-router-dom";
+import {connect} from "react-redux";
 
 const SearchDnaSequences = <FindInPage/>;
 const UploadFilesToProcess = <UploadFiles/>;
@@ -14,40 +19,43 @@ const DownloadFilesToLocal = <DownloadFiles/>;
 const AppSettings = <Settings/>;
 const SearchFromDatabase = <SearchDatabase/>;
 
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import {IDispatchPropsTestPage, IPropsTestPage} from "../pages/TestPage";
-
-export interface INavigationBarComponentProps {
-
+export interface INavigationBarComponentProps/* extends RouteComponentProps<any>, React.Props<any>*/ {
+    history?: any
+    intl?: any;
 }
 
 export interface INavigationBarComponentState {
 
 }
 
+export interface INavigationBarComponentDispatch {
 
-export class NavigationBarComponent extends React.Component<INavigationBarComponentProps & INavigationBarComponentState> {
-    public constructor(props: INavigationBarComponentProps & INavigationBarComponentState) {
+}
+
+
+
+export class NavigationBarComponent extends React.Component<INavigationBarComponentProps & INavigationBarComponentDispatch & INavigationBarComponentState> {
+    public constructor(props: INavigationBarComponentProps & INavigationBarComponentState & INavigationBarComponentDispatch) {
         super(props);
     }
     state = {
         selectedIndex: 0,
     };
 
+    componentWillMount(){
+        console.log("History propsss", this.props.history)
+    }
 
-
-
-    // select = (index) => {
-    //     this.setState({selectedIndex: index});
-    //     if (index == 1) {
-    //         browserHistory.push(RoutesConstants.SUB_SEQUENCE_SEARCH_ROUTE_PATH);
-    //     } else if (index == 2) {
-    //         browserHistory.push(RoutesConstants.DATABASE_SEARCH_ROUTE_PATH);
-    //     }
-    //
-    // };
+    select = (index) => {
+        this.setState({selectedIndex: index});
+        if (index == 0) {
+            this.props.history.push("/");
+        } else if (index == 1) {
+            this.props.history.push("/test1");
+        } else if (index == 2) {
+            this.props.history.push("/test2");
+        }
+    };
 
     public render() {
 
@@ -55,14 +63,25 @@ export class NavigationBarComponent extends React.Component<INavigationBarCompon
             <div>
                 <MuiThemeProvider>
                     <Paper zDepth={2}>
-                        <RaisedButton label={"Index"} containerElement={<Link to="/" />}>
-                        </RaisedButton>
+                        <BottomNavigation selectedIndex={this.state.selectedIndex}>
+                            <BottomNavigationItem
+                                label={"Index"}
+                                icon={SearchDnaSequences}
+                                onTouchTap={() => this.select(0)}
+                            />
 
-                        <RaisedButton label={"testpage1"} containerElement={<Link to="/test1" />}>
-                        </RaisedButton>
+                            <BottomNavigationItem
+                                label={"Link 1"}
+                                icon={UploadFilesToProcess}
+                                onTouchTap={() => this.select(1)}
+                            />
 
-                        <RaisedButton label={"testpage2"} containerElement={<Link to="/test2" />}>
-                        </RaisedButton>
+                            <BottomNavigationItem
+                                label={"Link 2"}
+                                icon={DownloadFilesToLocal}
+                                onTouchTap={() => this.select(2)}
+                            />
+                        </BottomNavigation>
                     </Paper>
                 </MuiThemeProvider>
             </div>
@@ -70,3 +89,14 @@ export class NavigationBarComponent extends React.Component<INavigationBarCompon
         );
     }
 }
+
+/*
+const connectModule = connect(
+    (state) => ({
+
+    }),
+    {
+
+    })(NavigationBarComponent);
+
+export default withRouter(connectModule);*/

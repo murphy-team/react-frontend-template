@@ -10,17 +10,23 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-r
 import {WelcomePageContainer} from "../pages/WelcomePageContainer";
 import {ToDoPageContainerII} from "../pages/ToDoPageContainerII";
 import {ToDoPageContainer} from "../pages/ToDoPageContainer";
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import {NavigationBarComponent} from "./NavigationBarComponent";
+import { Route } from 'react-router-dom'
 import {TestPage} from "../pages/TestPage";
+import {NavigationBarComponent} from "./NavigationBarComponent";
+import createHistory from 'history/createBrowserHistory'
+
+const history = createHistory();
+
+const routerMid = routerMiddleware(history);
 
 const reducer = combineReducers({
     reducers,
     intl: intlReducer,
-    //routing: routerReducer,
+    routing: routerReducer,
 });
 
-const middlewares = [ReduxThunk["default"], logger];
+
+const middlewares = [ReduxThunk["default"], logger, routerMid];
 
 export const store = createStore(reducer,
     composeWithDevTools(
@@ -34,14 +40,14 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <Router>
+                        <ConnectedRouter history={history}>
                             <div>
-                                <NavigationBarComponent/>
+                                <NavigationBarComponent history={history}/>
                                 <Route exact path="/" component={TestPage}/>
                                 <Route exact path="/test1" component={ToDoPageContainer}/>
                                 <Route exact path="/test2" component={ToDoPageContainerII}/>
                             </div>
-                        </Router>
+                        </ConnectedRouter>
                         {this.props.children}
                     </div>
                 </IntlProvider>
