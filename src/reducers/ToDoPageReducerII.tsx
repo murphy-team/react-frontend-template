@@ -5,12 +5,12 @@ import {ToDoPageDTO} from "../domain/pages/ToDoPageDTO";
 import {ToDoItemDTO} from "../domain/ToDoItemDTO";
 
 export class ToDoPageStateII {
-    _toDoPage: ToDoPageDTO;
+    _toDoPageII: ToDoPageDTO;
 
     public constructor() {
-        this._toDoPage = new ToDoPageDTO();
-        this._toDoPage._toDoItems = new Array<ToDoItemDTO>();
-        this._toDoPage._tableHeaderColumns = new Array<TableHeaderColumnDTO>();
+        this._toDoPageII = new ToDoPageDTO();
+        this._toDoPageII._toDoItems = new Array<ToDoItemDTO>();
+        this._toDoPageII._tableHeaderColumns = new Array<TableHeaderColumnDTO>();
 
         let singleHeader: TableHeaderColumnDTO;
 
@@ -19,14 +19,14 @@ export class ToDoPageStateII {
         singleHeader._columnName = "Name";
         singleHeader._value = "name";
         singleHeader._width = "20%";
-        this._toDoPage._tableHeaderColumns.push(singleHeader);
+        this._toDoPageII._tableHeaderColumns.push(singleHeader);
 
         singleHeader = new TableHeaderColumnDTO();
         singleHeader._isKey = false;
         singleHeader._columnName = "Description";
         singleHeader._value = "description";
         singleHeader._width = "20%";
-        this._toDoPage._tableHeaderColumns.push(singleHeader);
+        this._toDoPageII._tableHeaderColumns.push(singleHeader);
 
 
     }

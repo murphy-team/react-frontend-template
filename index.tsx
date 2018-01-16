@@ -10,19 +10,20 @@ class Index {
     public constructor() {
 
         const Start = () => (
+            <div>
                 <BrowserRouter>
                     <Switch>
                     <Route exact path="/" component={App}/>
-                    <Route path="/2" component={ToDoPageContainerII}/>
+                    <Route path="/test1" component={ToDoPageContainer}/>
+                        <Route path="/test2" component={ToDoPageContainerII}/>
                     </Switch>
                 </BrowserRouter>
+            </div>
         );
 
         injectTapEventPlugin();
         ReactDOM.render(
-            <div>
-                <Start/>
-            </div>,
+            <Start/>,
             document.getElementById('root')
         );
     }

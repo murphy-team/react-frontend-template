@@ -8,6 +8,8 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import {ToDoPageContainer} from "../pages/ToDoPageContainer";
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import {WelcomePage} from "../pages/WelcomePage";
+import {WelcomePageContainer} from "../pages/WelcomePageContainer";
 
 const reducer = combineReducers({
     reducers,
@@ -20,6 +22,7 @@ const middlewares = [ReduxThunk["default"], logger];
 export const store = createStore(reducer,
     composeWithDevTools(
         applyMiddleware(...middlewares)),
+    routerReducer
 );
 
 
@@ -29,7 +32,7 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <ToDoPageContainer/>
+                        <WelcomePageContainer/>
                         {this.props.children}
                     </div>
                 </IntlProvider>
