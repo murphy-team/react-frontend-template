@@ -12,7 +12,6 @@ export interface IDispatchPropsToDoPage {
 }
 
 export interface IStateToDoPage {
-
 }
 
 export class ToDoPage extends React.Component<IPropsToDoPage & IDispatchPropsToDoPage & InjectedIntlProps, IStateToDoPage> {

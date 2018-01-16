@@ -6,15 +6,16 @@ import {IntlProvider, intlReducer} from "react-intl-redux";
 import reducers from "../reducers/IndexReducers";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import logger from 'redux-logger';
-import {ToDoPageContainer} from "../pages/ToDoPageContainer";
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
-import {WelcomePage} from "../pages/WelcomePage";
 import {WelcomePageContainer} from "../pages/WelcomePageContainer";
+import {ToDoPageContainerII} from "../pages/ToDoPageContainerII";
+import {ToDoPageContainer} from "../pages/ToDoPageContainer";
+import {Route, Switch} from "react-router";
 
 const reducer = combineReducers({
     reducers,
     intl: intlReducer,
-   // routing: routerReducer,
+    routing: routerReducer,
 });
 
 const middlewares = [ReduxThunk["default"], logger];
@@ -32,7 +33,11 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <WelcomePageContainer/>
+                        <Switch>
+                            <Route exact path="/" component={WelcomePageContainer}/>
+                            <Route exact path="/test1" component={ToDoPageContainer}/>
+                            <Route exact path="/test2" component={ToDoPageContainerII}/>
+                        </Switch>
                         {this.props.children}
                     </div>
                 </IntlProvider>
