@@ -12,8 +12,9 @@ import {ToDoPageContainerII} from "../pages/ToDoPageContainerII";
 import {ToDoPageContainer} from "../pages/ToDoPageContainer";
 import { Route } from 'react-router-dom'
 import {TestPage} from "../pages/TestPage";
-import {NavigationBarComponent} from "./NavigationBarComponent";
+import {NavigationBarComponent} from "./NavigationBar/NavigationBarComponent";
 import createHistory from 'history/createBrowserHistory'
+import {NavigationBarContainer} from "./NavigationBar/NavigationBarContainer";
 
 const history = createHistory();
 
@@ -42,7 +43,7 @@ export class App extends React.Component<{}, {}> {
                     <div className="container-fluid">
                         <ConnectedRouter history={history}>
                             <div>
-                                <NavigationBarComponent history={history}/>
+                                <NavigationBarContainer/>
                                 <Route exact path="/" component={TestPage}/>
                                 <Route exact path="/test1" component={ToDoPageContainer}/>
                                 <Route exact path="/test2" component={ToDoPageContainerII}/>

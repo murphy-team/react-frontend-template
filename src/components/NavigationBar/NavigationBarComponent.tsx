@@ -9,9 +9,9 @@ import FindInPage from 'material-ui/svg-icons/action/find-in-page';
 import DownloadFiles from 'material-ui/svg-icons/file/file-download';
 import SearchDatabase from 'material-ui/svg-icons/action/youtube-searched-for'
 import {Link, withRouter} from "react-router-dom";
-import {ToDoPageDTO} from "../domain/pages/ToDoPageDTO";
+import {ToDoPageDTO} from "../../domain/pages/ToDoPageDTO";
 import {RouteComponentProps} from "react-router-dom";
-import {connect} from "react-redux";
+
 
 const SearchDnaSequences = <FindInPage/>;
 const UploadFilesToProcess = <UploadFiles/>;
@@ -19,43 +19,30 @@ const DownloadFilesToLocal = <DownloadFiles/>;
 const AppSettings = <Settings/>;
 const SearchFromDatabase = <SearchDatabase/>;
 
-export interface INavigationBarComponentProps/* extends RouteComponentProps<any>, React.Props<any>*/ {
-    history?: any
-    intl?: any;
+export interface INavigationBarComponentProps {
+    currentRoute: number
 }
 
 export interface INavigationBarComponentState {
-
 }
 
 export interface INavigationBarComponentDispatch {
-
+    onChangeRoute: (route, historyObject) => any;
 }
 
+export interface INavigationBarComponentRouteProps extends RouteComponentProps<any>{
+    history: any
+}
 
-
-export class NavigationBarComponent extends React.Component<INavigationBarComponentProps & INavigationBarComponentDispatch & INavigationBarComponentState> {
-    public constructor(props: INavigationBarComponentProps & INavigationBarComponentState & INavigationBarComponentDispatch) {
+export class NavigationBarComponent extends React.Component<INavigationBarComponentProps & INavigationBarComponentDispatch & INavigationBarComponentRouteProps, INavigationBarComponentState> {
+    public constructor(props: INavigationBarComponentProps  & INavigationBarComponentDispatch & INavigationBarComponentRouteProps) {
         super(props);
     }
-    state = {
-        selectedIndex: 0,
-    };
 
-    componentWillMount(){
-        console.log("History propsss", this.props.history)
+    private onTouchListener(routeIndex) {
+        //console.log("LA HISTORIA EN EL NAVBAR ", this.props.history);
+        this.props.onChangeRoute(routeIndex, this.props.history);
     }
-
-    select = (index) => {
-        this.setState({selectedIndex: index});
-        if (index == 0) {
-            this.props.history.push("/");
-        } else if (index == 1) {
-            this.props.history.push("/test1");
-        } else if (index == 2) {
-            this.props.history.push("/test2");
-        }
-    };
 
     public render() {
 
@@ -63,23 +50,23 @@ export class NavigationBarComponent extends React.Component<INavigationBarCompon
             <div>
                 <MuiThemeProvider>
                     <Paper zDepth={2}>
-                        <BottomNavigation selectedIndex={this.state.selectedIndex}>
+                        <BottomNavigation selectedIndex={this.props.currentRoute}>
                             <BottomNavigationItem
                                 label={"Index"}
                                 icon={SearchDnaSequences}
-                                onTouchTap={() => this.select(0)}
+                                onTouchTap={() => this.onTouchListener(0)}
                             />
 
                             <BottomNavigationItem
                                 label={"Link 1"}
                                 icon={UploadFilesToProcess}
-                                onTouchTap={() => this.select(1)}
+                                onTouchTap={() => this.onTouchListener(1)}
                             />
 
                             <BottomNavigationItem
                                 label={"Link 2"}
                                 icon={DownloadFilesToLocal}
-                                onTouchTap={() => this.select(2)}
+                                onTouchTap={() => this.onTouchListener(2)}
                             />
                         </BottomNavigation>
                     </Paper>
@@ -89,14 +76,3 @@ export class NavigationBarComponent extends React.Component<INavigationBarCompon
         );
     }
 }
-
-/*
-const connectModule = connect(
-    (state) => ({
-
-    }),
-    {
-
-    })(NavigationBarComponent);
-
-export default withRouter(connectModule);*/
