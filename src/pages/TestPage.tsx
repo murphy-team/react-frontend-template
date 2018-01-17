@@ -20,7 +20,7 @@ export class TestPage extends React.Component<IPropsTestPage & IDispatchPropsTes
     public render() {
         return(
             <div>
-                <h1>Soy otro componente</h1>
+                <h1>Soy el componente index</h1>
             </div>
         );
     }

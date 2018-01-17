@@ -7,6 +7,7 @@ import {
 import {injectIntl} from "react-intl";
 import {ChangeRouteAction} from "../../actions/ChangeRouteAction";
 import { withRouter } from 'react-router-dom';
+import {ChangeRouteActionThunk} from "../../actions/ChangeRouteActionThunk";
 
 
 const mapStateToProps = (state: IReducers): INavigationBarComponentProps => ({
@@ -14,7 +15,7 @@ const mapStateToProps = (state: IReducers): INavigationBarComponentProps => ({
 });
 
 const mapDispatchToProps = (dispatch): INavigationBarComponentDispatch => ({
-    onChangeRoute: (route, historyObject) => dispatch(ChangeRouteAction(route, historyObject))
+    onChangeRoute: (route, historyObject) => dispatch(ChangeRouteActionThunk(route, historyObject))
 });
 
 export const NavigationBarContainer = withRouter(connect<INavigationBarComponentProps,INavigationBarComponentDispatch, INavigationBarComponentRouteProps >(
