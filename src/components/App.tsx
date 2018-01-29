@@ -16,7 +16,7 @@ import {NavigationBarComponent} from "./NavigationBar/NavigationBarComponent";
 import createHistory from 'history/createBrowserHistory'
 import {NavigationBarContainer} from "./NavigationBar/NavigationBarContainer";
 
-const history = createHistory();
+export const history = createHistory();
 
 const routerMid = routerMiddleware(history);
 
@@ -45,8 +45,8 @@ export class App extends React.Component<{}, {}> {
                             <div>
                                 <NavigationBarContainer/>
                                 <Route exact path="/" component={TestPage}/>
-                                <Route exact path="/test1" component={ToDoPageContainer}/>
-                                <Route exact path="/test2" component={ToDoPageContainerII}/>
+                                <Route path="/test1" component={ToDoPageContainer}/>
+                                <Route path="/test2" component={ToDoPageContainerII}/>
                             </div>
                         </ConnectedRouter>
                         {this.props.children}

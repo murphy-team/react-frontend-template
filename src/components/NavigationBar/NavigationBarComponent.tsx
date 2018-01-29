@@ -27,21 +27,16 @@ export interface INavigationBarComponentState {
 }
 
 export interface INavigationBarComponentDispatch {
-    onChangeRoute: (route, historyObject) => any;
+    onChangeRoute: (route) => any;
 }
 
-export interface INavigationBarComponentRouteProps extends RouteComponentProps<any>{
-    history: any
-}
-
-export class NavigationBarComponent extends React.Component<INavigationBarComponentProps & INavigationBarComponentDispatch & INavigationBarComponentRouteProps, INavigationBarComponentState> {
-    public constructor(props: INavigationBarComponentProps  & INavigationBarComponentDispatch & INavigationBarComponentRouteProps) {
+export class NavigationBarComponent extends React.Component<INavigationBarComponentProps & INavigationBarComponentDispatch , INavigationBarComponentState> {
+    public constructor(props: INavigationBarComponentProps  & INavigationBarComponentDispatch) {
         super(props);
     }
 
     private onTouchListener(routeIndex) {
-        //console.log("LA HISTORIA EN EL NAVBAR ", this.props.history);
-        this.props.onChangeRoute(routeIndex, this.props.history);
+        this.props.onChangeRoute(routeIndex);
     }
 
     public render() {

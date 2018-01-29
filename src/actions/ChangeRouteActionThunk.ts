@@ -1,8 +1,9 @@
 import {ChangeRouteAction} from "./ChangeRouteAction";
+import {history} from "../components/App"
 
-export function ChangeRouteActionThunk(route, history) {
+export function ChangeRouteActionThunk(route) {
     return function (dispatch) {
-        dispatch(ChangeRouteAction(route, history));
+        dispatch(ChangeRouteAction(route));
         if (route === 0) {
             console.log("Voy a hacer push al index");
             history.push("/");

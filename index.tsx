@@ -5,16 +5,12 @@ import {App} from "./src/components/App";
 
 class Index {
     public constructor() {
-        const Start = () => (
-            <div>
-                <App/>
-            </div>
-        );
-
         injectTapEventPlugin();
         ReactDOM.render((
-            <Start/>
-           ),
+                <div>
+                    <App/>
+                </div>
+            ),
             document.getElementById('root')
         );
     }
