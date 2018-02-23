@@ -4,11 +4,9 @@ import {ActionConstants} from "../actions/ActionConstants";
 
 export class NavigationBarComponentState {
     _selectedItem: number;
-    _historyObject: any;
 
     public constructor() {
         this._selectedItem = 0;
-        this._historyObject = null;
     }
 }
 

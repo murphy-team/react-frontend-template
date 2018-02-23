@@ -21,17 +21,9 @@ export class WelcomePage extends React.Component<IPropsWelcomePage & IDispatchPr
     }
 
     public render() {
-        return(
+        return (
             <div>
-                <header>
-                    <nav>
-                        <ul>
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/test1'>Roster</Link></li>
-                            <li><Link to='/test2'>Schedule</Link></li>
-                        </ul>
-                    </nav>
-                </header>
+                <h2>Soy otro componente</h2>
             </div>
         );
     }

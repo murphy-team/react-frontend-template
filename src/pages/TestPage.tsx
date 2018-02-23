@@ -1,6 +1,4 @@
 import * as React from "react";
-import {ToDoTableComponent} from "../components/ToDoTableComponent";
-import {ToDoPageDTO} from "../domain/pages/ToDoPageDTO";
 
 export interface IPropsTestPage {
 }
