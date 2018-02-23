@@ -35,7 +35,7 @@ export class NavigationBarComponent extends React.Component<INavigationBarCompon
     public render() {
 
         return (
-            <div>
+            <div className="navigation-bar-component">
                 <MuiThemeProvider>
                     <Paper zDepth={2}>
                         <BottomNavigation selectedIndex={this.props.currentRoute}>
