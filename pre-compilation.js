@@ -62,11 +62,6 @@ module.exports = function (env) {
                     }]
                 },
                 {
-                    test: /\.(js)$/,
-                    exclude: /node_modules/,
-                    loader: 'babel-loader',
-                },
-                {
                     test: /\.(html)$/,
                     exclude: /node_modules/,
                     loader: 'html-loader'
@@ -109,9 +104,9 @@ module.exports = function (env) {
                     loader: 'url-loader?limit=10000&mimetype=image/svg+xml'
                 },
                 {
-                    test: /\.jpe?g$|\.ico$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
-                    loader: 'file-loader?name=[name].[ext]'
-                },
+                    test: /\.png$/,
+                    loader: 'url-loader?limit=10000&mimetype=image/png'
+                }
             ]
         },
         plugins: [
