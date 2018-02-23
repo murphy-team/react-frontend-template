@@ -1,7 +1,7 @@
 {
-  "name": "react-test-concept",
+  "name": "react-frontend-template",
   "version": "1.0.0",
-  "description": "React basic concept example with webpack, typescript and optional redux",
+  "description": "React basic concept example with webpack, typescript redux and routing",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,11 +10,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/murphy_team/react-test-concept.git"
+    "url": "git+ssh://git@bitbucket.org:murphy_team/react-frontend-template.git"
   },
   "author": "Alicia Fernández Rovira, Álvaro Gómez Jáuregui",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/murphy_team/react-test-concept#readme",
+  "homepage": "https://bitbucket.org/murphy_team/react-frontend-template/overview",
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
