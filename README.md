@@ -1,6 +1,6 @@
 # (Typescript) React + Redux + Router template
 
-[![N|Solid](https://cdn-images-1.medium.com/max/800/1*wjlfZatDlTnqfgYJ9iKnKQ.png)](https://nodejs.org/es/)
+<img src="https://cdn-images-1.medium.com/max/800/1*wjlfZatDlTnqfgYJ9iKnKQ.png" width="300">
 
 This project is a skeleton for building great front-end apps using React + Redux + Router + Sass preprocessor (scss). It includes Webpack as module bundler (also for hot reloading) + Thunk + Material UI + several libraries as redux-auth-wrapper for managing user auth and intl for internationalization or axios for http requests.
 
