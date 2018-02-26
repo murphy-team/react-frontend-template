@@ -1,13 +1,13 @@
 # (Typescript) React + Redux + Router template
 
-<img src="https://cdn-images-1.medium.com/max/800/1*wjlfZatDlTnqfgYJ9iKnKQ.png" width="300">
+[![N|Solid](https://programarivm.com/wp-content/uploads/2016/06/React.js_logo.png)](https://reactjs.org)
 
 This project is a skeleton for building great front-end apps using React + Redux + Router + Sass preprocessor (scss). It includes Webpack as module bundler (also for hot reloading) + Thunk + Material UI + several libraries as redux-auth-wrapper for managing user auth and intl for internationalization or axios for http requests.
 
 
 ### Installation
 
-Install the dependencies and devDependencies and start the dev server [the dev server](https://localhost:3002).
+Install the dependencies and devDependencies and start the dev server [the dev server](http://localhost:3002).
 
 ```sh
 $ npm install
