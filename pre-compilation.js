@@ -12,6 +12,8 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
 
+    mode: 'development',
+
     target: "web",
 
     node: {
@@ -137,4 +139,4 @@ module.exports = {
             jQuery: "jquery"
         }),
     ]
-}
+};
