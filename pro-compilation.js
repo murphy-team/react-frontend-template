@@ -32,32 +32,24 @@ module.exports = {
         filename: '[hash].[name].js'
     },
 
-    // optimization: {
-    //     runtimeChunk: {
-    //         name: "manifest"
-    //     },
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendor: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: "vendors",
-    //                 priority: -20,
-    //                 chunks: "all"
-    //             }
-    //         }
-    //     }
-    // },
+    performance: {
+        hints: false,
+    },
+
     optimization: {
+        minimize: true,
         splitChunks: {
             cacheGroups: {
-                commons: {
+                vendor: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendor',
-                    chunks: 'all'
+                    chunks: 'initial',
+                    enforce: true
                 }
             }
         }
     },
+
     module: {
         rules: [
             {
@@ -124,31 +116,6 @@ module.exports = {
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
 
-        // new webpack.optimize.UglifyJsPlugin({
-        //     compress: {
-        //         warnings: false,
-        //         screw_ie8: true,
-        //         conditionals: true,
-        //         unused: true,
-        //         comparisons: true,
-        //         sequences: true,
-        //         dead_code: true,
-        //         evaluate: true,
-        //         if_return: true,
-        //         join_vars: true
-        //     },
-        //     output: {
-        //         comments: false
-        //     }
-        // }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     filename: 'vendor.[hash].js',
-        //     minChunks(module) {
-        //         return module.context &&
-        //             module.context.indexOf('node_modules') >= 0;
-        //     }
-        // }),
         new webpack.HashedModuleIdsPlugin(),
         new ExtractTextPlugin({
             filename: '[hash].[name].css',
@@ -171,4 +138,4 @@ module.exports = {
             jQuery: "jquery"
         }),
     ]
-}
+};

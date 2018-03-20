@@ -119,11 +119,7 @@ module.exports = {
             watch: true     // If true, remove files on recompile. (Default: false)
             //exclude: ['RunExpress.js']
         }),
-        //Generate index.html in /dist => https://github.com/ampedandwired/html-webpack-plugin
 
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     names: ['vendor', 'manifest'],
-        // }),
         new ExtractTextPlugin({
             filename: '[hash].[name].css',
             disable: false,
