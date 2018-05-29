@@ -18,7 +18,6 @@ const routerMid = routerMiddleware(history);
 
 const reducer = combineReducers({
     reducers,
-    intl: intlReducer,
 });
 
 
@@ -34,12 +33,10 @@ export class App extends React.Component<{}, {}> {
     public render(): JSX.Element {
         return (
             <Provider store={store}>
-                <IntlProvider>
                     <div className="container-fluid">
                         <IncrementePageContainer/>
                         {this.props.children}
                     </div>
-                </IntlProvider>
             </Provider>
         );
     }
