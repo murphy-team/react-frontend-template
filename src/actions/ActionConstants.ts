@@ -1,4 +1,4 @@
 export class ActionConstants {
-    public static CHANGE_ROUTE: string = "CHANGE_ROUTE";
+    public static INCREMENT_NUMBER: string = "INCREMENT_NUMBER";
 
 }

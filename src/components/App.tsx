@@ -7,11 +7,9 @@ import reducers from "../reducers/IndexReducers";
 import {composeWithDevTools} from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import {ConnectedRouter, routerMiddleware, routerReducer} from 'react-router-redux';
-import {WelcomePageContainer} from "../pages/WelcomePageContainer";
+import {IncrementePageContainer} from "../pages/IncrementePageContainer";
 import {Route} from 'react-router-dom'
-import {TestPage} from "../pages/TestPage";
 import createHistory from 'history/createBrowserHistory'
-import {NavigationBarContainer} from "./NavigationBar/NavigationBarContainer";
 import {Constants} from "../common/Constants";
 
 export const history = createHistory();
@@ -21,7 +19,6 @@ const routerMid = routerMiddleware(history);
 const reducer = combineReducers({
     reducers,
     intl: intlReducer,
-    routing: routerReducer,
 });
 
 
@@ -39,13 +36,7 @@ export class App extends React.Component<{}, {}> {
             <Provider store={store}>
                 <IntlProvider>
                     <div className="container-fluid">
-                        <ConnectedRouter history={history}>
-                            <div>
-                                <NavigationBarContainer/>
-                                <Route exact path={Constants.INDEX_ROUTE} component={TestPage}/>
-                                <Route path={Constants.ROUTE_PATH_EXAMPLE} component={WelcomePageContainer}/>
-                            </div>
-                        </ConnectedRouter>
+                        <IncrementePageContainer/>
                         {this.props.children}
                     </div>
                 </IntlProvider>

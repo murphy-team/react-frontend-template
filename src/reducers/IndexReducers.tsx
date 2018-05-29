@@ -1,13 +1,10 @@
 import {combineReducers} from "redux";
-import {WelcomePageReducer, WelcomePageState} from "./WelcomePageReducer";
-import {NavigationBarComponentReducer, NavigationBarComponentState} from "./NavigationBarComponentReducer";
+import {IncrementPageReducer, IncrementPageState} from "./IncrementPageReducer";
 
 export default combineReducers <IReducers> ({
-    NavigationBarComponentReducer,
-    WelcomePageReducer,
+    IncrementPageReducer,
 });
 
 export interface IReducers {
-    NavigationBarComponentReducer: NavigationBarComponentState
-    WelcomePageReducer: WelcomePageState
+    IncrementePageReducer: IncrementPageState
 }
